@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.Configuration;
+using System.Windows.Controls;
 using System.Windows.Input;
 using Prism.Commands;
 using Prism.Mvvm;
@@ -59,6 +60,20 @@ namespace TheDebtBook.ViewModel
             _modelDebtor = newDebtor;
         }
 
+        private ICommand _ShowTransactionCommand;
+
+        public ICommand ShowTransactionCommand
+        {
+            get
+            {
+                return _ShowTransactionCommand ?? (_ShowTransactionCommand = new DelegateCommand<SelectionChangedEventArgs>(ShowTransactionCommandExecute));
+            }
+        }
+
+        private void ShowTransactionCommandExecute(SelectionChangedEventArgs e)
+        {
+            
+        }
 
         private ICommand _selectedCommand;
 

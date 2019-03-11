@@ -27,5 +27,10 @@ namespace TheDebtBook
         {
             InitializeComponent();
         }
+
+        private void DgrdDepters_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }
