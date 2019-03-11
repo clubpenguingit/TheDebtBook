@@ -36,13 +36,14 @@
                    FontSize="16"/>
 
         <DataGrid Grid.Row="1"
+                  IsReadOnly="True"
                   Grid.Column="0"
                   Name="dgrdDepters" 
                   AutoGenerateColumns="False"
                   MinWidth="250"
                   Margin="10,10"
                   VerticalAlignment="Top"
-                  ItemsSource="{Binding Path=Debtors}">
+                  ItemsSource="{Binding Path=Debtors}" SelectionChanged="DgrdDepters_SelectionChanged_1">
             <i:Interaction.Triggers>
                 <i:EventTrigger EventName="DgrdDepters_SelectionChanged">
                     <i:InvokeCommandAction Command="{Binding ShowTransactionCommand}"

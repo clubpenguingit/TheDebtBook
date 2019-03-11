@@ -32,5 +32,10 @@ namespace TheDebtBook
         {
 
         }
+
+        private void DgrdDepters_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }
