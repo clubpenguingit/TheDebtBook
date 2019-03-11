@@ -4,10 +4,11 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TheDebtBook"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
         mc:Ignorable="d"
         DataContext="{Binding Source={StaticResource ViewModelLocator}, Path=MainViewModel}"
         Title="MainWindow" Height="450" Width="800">
-        
+
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto"></ColumnDefinition>
@@ -18,7 +19,14 @@
             <RowDefinition Height="Auto"></RowDefinition>
         </Grid.RowDefinitions>
         <TextBlock Text="Depters" Margin="10,10" Grid.Row="0"></TextBlock>
-        <DataGrid Grid.Row="1" Name="dgrdDepters" ItemsSource="{Binding }">
+        <DataGrid Grid.Row="1" Name="dgrdDepters" ItemsSource="{Binding }" Margin="1,0.2,0.4,1" SelectionChanged="DgrdDepters_SelectionChanged">
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="DgrdDepters_SelectionChanged">
+                    <i:InvokeCommandAction Command="{Binding ShowTransactionCommand}"
+                                           CommandParameter="{Binding Path = SelectedItem, RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=DataGrid}}"></i:InvokeCommandAction>
+                </i:EventTrigger>
+
+            </i:Interaction.Triggers>
         </DataGrid>
         <Button Grid.Column="1" Name="btnAdd" Content="Knap hæhæhæhæhæhæhæhæ" Margin="Auto"></Button>
     </Grid>
