@@ -10,6 +10,10 @@ namespace TheDebtBook.ViewModel
     public class MainViewModel : BindableBase
     {
 
+        public MainViewModel()
+        {
+            Debtors.Add(new Debtor("Britta Nielsen",121000000));
+        }
 
         #region Properties
 
@@ -49,13 +53,16 @@ namespace TheDebtBook.ViewModel
 
         private void AddDebtorCommandExecute()
         {
-
+            var newDebtor = new Debtor();
+            Debtors.Add(newDebtor);
+            _modelDebtor = newDebtor;
         }
 
 
 
+        #endregion //Commands
 
-        #endregion
+
 
 
     }
