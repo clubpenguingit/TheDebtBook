@@ -10,7 +10,6 @@ namespace TheDebtBook.ViewModel
     public class MainViewModel : BindableBase
     {
 
-
         #region Properties
 
         private Debtor _modelDebtor;

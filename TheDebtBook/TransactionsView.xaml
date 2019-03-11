@@ -16,13 +16,15 @@
         <StackPanel Grid.Column="0"
                     Width="Auto">
 
-            <DataGrid Margin="10,10" Width="Auto">
-               <DataGridTextColumn Header="Date" 
-                                   Binding="{Binding Path=XXXXX}"></DataGridTextColumn
+            <DataGrid Margin="10,10" Width="Auto" MinWidth="200" ItemsSource="{Binding Path=Debtors}" AutoGenerateColumns="False">
+               <DataGridTextColumn Header="Date"
+                                   Width=" Auto"
+                                   MinWidth="100"
+                                   Binding="{Binding Path=Debtors[]}"></DataGridTextColumn
                >
                <DataGridTextColumn Header="Transaction"
-                                   Binding="{Binding Path=XXXXX}"></DataGridTextColumn>
-
+                                   Binding="{Binding Path=}"></DataGridTextColumn>
+                
             </DataGrid>
 
             <Button Margin="10,10">_Close</Button>
