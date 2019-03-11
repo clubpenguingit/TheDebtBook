@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TheDebtBook"
         mc:Ignorable="d"
-        Title="TransactionsView" Height="450" Width="800">
+        Title="TransactionsView" Height="450" Width="800"
+        DataContext="{Binding Source={StaticResource ViewModelLocator}, Path=MainViewModel}">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto"></ColumnDefinition>
@@ -15,6 +16,16 @@
         <StackPanel Grid.Column="0"
                     Width="Auto">
 
+            <DataGrid Margin="10,10" Width="Auto">
+               <DataGridTextColumn Header="Date" 
+                                   Binding="{Binding Path=XXXXX}"></DataGridTextColumn
+               >
+               <DataGridTextColumn Header="Transaction"
+                                   Binding="{Binding Path=XXXXX}"></DataGridTextColumn>
+
+            </DataGrid>
+
+            <Button Margin="10,10">_Close</Button>
         </StackPanel>
         
         <StackPanel Grid.Column="1"
@@ -22,6 +33,7 @@
             <TextBox Text="Input value please"
                      Margin="10,10"
                      HorizontalAlignment="Center"></TextBox>
+            <Button Margin="10,10">_Add Transaction</Button>
         </StackPanel>
     </Grid>
 </Window>

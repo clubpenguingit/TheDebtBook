@@ -9,6 +9,7 @@ namespace TheDebtBook.Model
         {
             Name = name;
             Debt = debt;
+            TransactionsList = new List<Payment>();
         }
 
         public List<Payment> TransactionsList { get; set; }
