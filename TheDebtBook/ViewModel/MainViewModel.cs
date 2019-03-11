@@ -12,6 +12,7 @@ namespace TheDebtBook.ViewModel
 
         public MainViewModel()
         {
+            debtors = new ObservableCollection<Debtor>();
             Debtors.Add(new Debtor("Britta Nielsen",121000000));
         }
 
