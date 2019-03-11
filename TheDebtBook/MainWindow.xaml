@@ -11,13 +11,42 @@
 
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto"></ColumnDefinition>
-            <ColumnDefinition Width="Auto" ></ColumnDefinition>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"></RowDefinition>
-            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
+        <TextBlock Text="Debters:" 
+                   Margin="10,10"
+                   VerticalAlignment="Bottom"
+                   Grid.Row="0"
+                   Grid.Column="0"
+                   FontWeight="Bold"
+                   FontStyle="Italic"
+                   FontSize="16"/>
+
+        <DataGrid Grid.Row="1"
+                  Grid.Column="0"
+                  Name="dgrdDepters" 
+                  AutoGenerateColumns="False"
+                  MinWidth="250"
+                  Margin="10,10"
+                  VerticalAlignment="Top"
+                  ItemsSource="{Binding Path=Debtors}">
+
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Name" 
+                                    Binding="{Binding Path=Name}"/>
+
+                <DataGridTextColumn Header="Debt" 
+                                    Binding="{Binding Path=Debt}"/>
+            </DataGrid.Columns>
         <TextBlock Text="Depters" Margin="10,10" Grid.Row="0"></TextBlock>
         <DataGrid Grid.Row="1" Name="dgrdDepters" ItemsSource="{Binding }" Margin="1,0.2,0.4,1" SelectionChanged="DgrdDepters_SelectionChanged">
             <i:Interaction.Triggers>
@@ -28,6 +57,43 @@
 
             </i:Interaction.Triggers>
         </DataGrid>
-        <Button Grid.Column="1" Name="btnAdd" Content="Knap hæhæhæhæhæhæhæhæ" Margin="Auto"></Button>
+
+        <Button Grid.Column="2" 
+                Grid.Row="3" 
+                MaxWidth="100"
+                HorizontalAlignment="Right"
+                Name="btnAdd" 
+                Margin="10,0"
+                Content="Add new debt"  
+                Padding="5" />
+
+        <Label Content="Name: " 
+               FontWeight="Bold"
+               HorizontalAlignment="Center"
+               VerticalAlignment="Center"
+               Grid.Row="1" 
+               Grid.Column="1" 
+               Margin="10,10"/>
+
+        <Label Content="Debt: " 
+               FontWeight="Bold"
+               HorizontalAlignment="Center"
+               VerticalAlignment="Center"
+               Grid.Row="2" 
+               Grid.Column="1" 
+               Margin="10,10"/>
+
+        <TextBox Grid.Column="2" 
+                 VerticalAlignment="Center"
+                 Margin="10,2" 
+                 MinWidth="250" 
+                 MaxHeight="15" 
+                 Grid.Row="1" />
+
+        <TextBox Grid.Column="2" 
+                 VerticalAlignment="Center"
+                 Grid.Row="2" 
+                 Margin="10,1" 
+                 MaxHeight="15" />
     </Grid>
 </Window>
