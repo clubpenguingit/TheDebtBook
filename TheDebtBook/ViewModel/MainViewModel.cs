@@ -12,6 +12,7 @@ namespace TheDebtBook.ViewModel
 
         public MainViewModel()
         {
+            debtors = new ObservableCollection<Debtor>();
             Debtors.Add(new Debtor("Britta Nielsen",121000000));
         }
 
@@ -59,6 +60,15 @@ namespace TheDebtBook.ViewModel
         }
 
 
+        private ICommand _selectedCommand;
+
+        public ICommand SelectedCommand
+        {
+            get { return _selectedCommand ?? (_selectedCommand = new DelegateCommand(() =>
+            {
+                
+            })); }
+        }
 
         #endregion //Commands
 

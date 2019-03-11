@@ -16,14 +16,18 @@
         <StackPanel Grid.Column="0"
                     Width="Auto">
 
-            <DataGrid Margin="10,10" Width="Auto" MinWidth="200" ItemsSource="{Binding Path=Debtors}" AutoGenerateColumns="False">
-               <DataGridTextColumn Header="Date"
+            <DataGrid Margin="10,10" Width="Auto" MinWidth="200" ItemsSource="{Binding Path=ModelDebtor.TransactionsList}" AutoGenerateColumns="False">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Date"
                                    Width=" Auto"
+                                   
                                    MinWidth="100"
-                                   Binding="{Binding Path=Debtors[]}"></DataGridTextColumn
+                                   Binding="{Binding Path=Date}"></DataGridTextColumn
                >
                <DataGridTextColumn Header="Transaction"
-                                   Binding="{Binding Path=}"></DataGridTextColumn>
+                                   Binding="{Binding Path=Amount}"></DataGridTextColumn>
+                </DataGrid.Columns>
+                
                 
             </DataGrid>
 

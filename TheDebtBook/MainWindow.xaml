@@ -4,9 +4,13 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TheDebtBook"
+        xmlns:cmd="http://www.galasoft.ch/mvvmlight"
+
         mc:Ignorable="d"
         DataContext="{Binding Source={StaticResource ViewModelLocator}, Path=MainViewModel}"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="450" Width="800"
+        >
+
         
     <Grid>
         <Grid.ColumnDefinitions>
@@ -18,7 +22,8 @@
             <RowDefinition Height="Auto"></RowDefinition>
         </Grid.RowDefinitions>
         <TextBlock Text="Depters" Margin="10,10" Grid.Row="0"></TextBlock>
-        <DataGrid Grid.Row="1" Name="dgrdDepters" ItemsSource="{Binding Path=Debtors }">
+        <DataGrid Grid.Row="1" Name="dgrdDepters" ItemsSource="{Binding Path=Debtors }" Grid.ColumnSpan="2" Height="46" Margin="0,0,188.4,-0.4" VerticalAlignment="Top"
+                  >
         </DataGrid>
         <Button Grid.Column="1" Name="btnAdd" Content="Knap hæhæhæhæhæhæhæhæ" Margin="10,10"></Button>
     </Grid>
