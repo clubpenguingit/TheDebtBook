@@ -58,7 +58,6 @@
                                     Binding="{Binding Path=Debt}"/>
             </DataGrid.Columns>
             </DataGrid>
-        <TextBlock Text="Depters" Margin="10,10" Grid.Row="0"></TextBlock>
         
 
         <Button Grid.Column="2" 
