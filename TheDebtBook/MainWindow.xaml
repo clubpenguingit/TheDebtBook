@@ -42,9 +42,11 @@
                   MinWidth="250"
                   Margin="10,10"
                   VerticalAlignment="Top"
-                  ItemsSource="{Binding Path=Debtors}">
+                  ItemsSource="{Binding Path=Debtors}"
+                  IsReadOnly="True"
+                  >
             <i:Interaction.Triggers>
-                <i:EventTrigger EventName="DgrdDepters_SelectionChanged">
+                <i:EventTrigger EventName="SelectionChanged">
                     <i:InvokeCommandAction Command="{Binding ShowTransactionCommand}"
                                            CommandParameter="{Binding Path = SelectedItem, RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=DataGrid}}"></i:InvokeCommandAction>
                 </i:EventTrigger>

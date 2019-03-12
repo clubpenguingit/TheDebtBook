@@ -16,8 +16,13 @@
         <StackPanel Grid.Column="0"
                     Width="Auto">
 
-            <DataGrid Margin="10,10" Width="Auto" MinWidth="200" ItemsSource="{Binding Path=ModelDebtor.TransactionsList}" AutoGenerateColumns="False">
-                <DataGrid.Columns>
+            <DataGrid Margin="10,10" 
+                      Width="Auto" 
+                      MinWidth="200" 
+                      ItemsSource="{Binding Path=CurrentTransList}" 
+                      AutoGenerateColumns="True"
+                      IsReadOnly="True">
+                <!--<DataGrid.Columns>
                     <DataGridTextColumn Header="Date"
                                    Width=" Auto"
                                    
@@ -26,20 +31,23 @@
                >
                <DataGridTextColumn Header="Transaction"
                                    Binding="{Binding Path=Amount}"></DataGridTextColumn>
-                </DataGrid.Columns>
+                </DataGrid.Columns>-->
                 
                 
             </DataGrid>
 
-            <Button Margin="10,10">_Close</Button>
+            <Button Margin="10,10" IsCancel="True">_Close</Button>
         </StackPanel>
         
         <StackPanel Grid.Column="1"
                     Width="Auto">
-            <TextBox Text="Input value please"
+            <TextBox Name="transbox"  Text="Input value please"
                      Margin="10,10"
-                     HorizontalAlignment="Center"></TextBox>
-            <Button Margin="10,10">_Add Transaction</Button>
+                     HorizontalAlignment="Center"
+                     ></TextBox>
+            <Button Name="Knap"  Margin="10,10" Command="{Binding Path= AddTransactionCommand}"
+                    CommandParameter="{Binding ElementName=transbox, Path=Text}" 
+                    >_Add Transaction</Button>
         </StackPanel>
     </Grid>
 </Window>

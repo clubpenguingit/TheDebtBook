@@ -1,18 +1,23 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 
 namespace TheDebtBook.Model
 {
+
+    public class TransList : ObservableCollection<Payment> { }
+
     public class Debtor
     {
         public Debtor(string name = "NN", double debt = 0)
         {
             Name = name;
             Debt = debt;
-            TransactionsList = new List<Payment>();
+            TransactionsList = new TransList();
+            TransactionsList.Add(new Payment(DateTime.Now,0));
         }
 
-        public List<Payment> TransactionsList { get; set; }
+        public TransList TransactionsList { get; set; }
         public string Name  { get; set; }
         public double Debt  { get; set; }
 
