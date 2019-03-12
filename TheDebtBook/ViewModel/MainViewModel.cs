@@ -90,9 +90,8 @@ namespace TheDebtBook.ViewModel
             {
                 var newDebtor = new Debtor();
                 //
-                newDebtor.Debt = newDebtorDebt;
                 newDebtor.Name = newDebtorName;
-
+                newDebtor.PayOrBorrow(newDebtorDebt);
                 Debtors.Add(newDebtor);
                 _modelDebtor = newDebtor;
 
