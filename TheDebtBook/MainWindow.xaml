@@ -43,11 +43,11 @@
                   MinWidth="250"
                   Margin="10,10"
                   VerticalAlignment="Top"
-                  ItemsSource="{Binding Path=Debtors}"
-                  IsReadOnly="True"
+                  ItemsSource="{Binding Path=Debtors, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                  
                   >
             <i:Interaction.Triggers>
-                <i:EventTrigger EventName="SelectionChanged">
+                <i:EventTrigger EventName="Selected">
                     <i:InvokeCommandAction Command="{Binding ShowTransactionCommand}"
                                            CommandParameter="{Binding Path = SelectedItem, RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=DataGrid}}"></i:InvokeCommandAction>
                 </i:EventTrigger>
@@ -58,7 +58,7 @@
                                     Binding="{Binding Path=Name}"/>
 
                 <DataGridTextColumn Header="Debt" 
-                                    Binding="{Binding Path=Debt}"/>
+                                    Binding="{Binding Path=Debt, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
             </DataGrid.Columns>
             </DataGrid>
         
@@ -69,8 +69,9 @@
                 HorizontalAlignment="Right"
                 Name="btnAdd" 
                 Margin="10,0"
-                Content="Add new debt"  
-                Padding="5" />
+                Content="Add new debtor"  
+                Padding="5"
+                />
 
         <Label Content="Name: " 
                FontWeight="Bold"

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Configuration;
 using System.Diagnostics;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using Prism.Commands;
@@ -17,15 +18,14 @@ namespace TheDebtBook.ViewModel
         public MainViewModel()
         {
             debtors = new ObservableCollection<Debtor>();
-            Debtors.Add(new Debtor("Britta Nielsen",121000000));
-            Debtors.Add(new Debtor("Tobias Lund", -1000));
-            Debtors[1].TransactionsList.Add(new Payment(DateTime.Now, 6969));
+            Debtors.Add(new Debtor("Britta Nielsen"));
+            Debtors.Add(new Debtor("Tobias Lund"));
+            Debtors[1].PayOrBorrow(6969);
         }
 
         #region Properties
 
        // public List<Payment> CurrentTransList { get; set; }
-        public TransList CurrentTransList { get; set; }
         private Debtor _modelDebtor;
         public Debtor ModelDebtor
         {
@@ -79,14 +79,14 @@ namespace TheDebtBook.ViewModel
 
         private void ShowTransactionCommandExecute(Debtor e)
         {
-            CurrentTransList = e.TransactionsList;
-            Debug.WriteLine("Translist set");
+            ModelDebtor = e;
             var window = new TransactionsView();
 
-            if (window.ShowDialog() == true)
+            if (window.ShowDialog() == true) // Change window 
             {
-
+                
             }
+            
         }
 
         private ICommand _addTransaction;
@@ -107,7 +107,15 @@ namespace TheDebtBook.ViewModel
                 double v;
                 bool success = double.TryParse(val, out v);
                 if (success)
-                    CurrentTransList.Add(new Payment(DateTime.Now, double.Parse(val)));
+                {
+                    ModelDebtor.PayOrBorrow(double.Parse(val));
+                }
+                else
+                {
+                    MessageBox.Show($"Value must be numeric.\n" +
+                                    $"Value was {val.ToString()}");
+                    return;
+                }
             }
 
 

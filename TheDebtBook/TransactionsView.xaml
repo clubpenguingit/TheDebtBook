@@ -19,7 +19,7 @@
             <DataGrid Margin="10,10" 
                       Width="Auto" 
                       MinWidth="200" 
-                      ItemsSource="{Binding Path=CurrentTransList}" 
+                      ItemsSource="{Binding Path=ModelDebtor.TransactionsList}" 
                       AutoGenerateColumns="True"
                       IsReadOnly="True">
                 <!--<DataGrid.Columns>
@@ -40,9 +40,11 @@
         </StackPanel>
         
         <StackPanel Grid.Column="1"
-                    Width="Auto">
+                    Width="Auto"
+                    >
             <TextBox Name="transbox"  Text="Input value please"
                      Margin="10,10"
+                     MinWidth="100"
                      HorizontalAlignment="Center"
                      ></TextBox>
             <Button Name="Knap"  Margin="10,10" Command="{Binding Path= AddTransactionCommand}"
