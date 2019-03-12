@@ -42,7 +42,8 @@
         <StackPanel Grid.Column="1"
                     Width="Auto"
                     >
-            <TextBox Name="transbox"  Text="Input value please"
+            <TextBox Name="transbox"  HorizontalContentAlignment="Center"
+                     Text="Amount"
                      Margin="10,10"
                      MinWidth="100"
                      HorizontalAlignment="Center"

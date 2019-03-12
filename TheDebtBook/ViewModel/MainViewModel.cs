@@ -20,6 +20,7 @@ namespace TheDebtBook.ViewModel
             debtors = new ObservableCollection<Debtor>();
             Debtors.Add(new Debtor("Britta Nielsen"));
             Debtors.Add(new Debtor("Tobias Lund"));
+            Debtors[0].PayOrBorrow(-012397345);
             Debtors[1].PayOrBorrow(6969);
         }
 
@@ -85,13 +86,23 @@ namespace TheDebtBook.ViewModel
 
         private void AddDebtorCommandExecute()
         {
-            var newDebtor = new Debtor();
-            //
-            newDebtor.Debt = newDebtorDebt;
-            newDebtor.Name = newDebtorName;
+            if (!String.IsNullOrEmpty(newDebtorName))
+            {
+                var newDebtor = new Debtor();
+                //
+                newDebtor.Debt = newDebtorDebt;
+                newDebtor.Name = newDebtorName;
 
-            Debtors.Add(newDebtor);
-            _modelDebtor = newDebtor;
+                Debtors.Add(newDebtor);
+                _modelDebtor = newDebtor;
+
+                newDebtorName = "";
+                newDebtorDebt = 0;
+            }
+            else
+            {
+                MessageBox.Show($"Cannot add debtor with no name");
+            }
         }
 
         private ICommand _ShowTransactionCommand;
