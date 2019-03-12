@@ -71,6 +71,7 @@
                 Margin="10,0"
                 Content="Add new debtor"  
                 Padding="5"
+                Command="{Binding AddDebtorCommand }"
                 />
 
         <Label Content="Name: " 
@@ -94,12 +95,16 @@
                  Margin="10,2" 
                  MinWidth="250" 
                  MaxHeight="15" 
-                 Grid.Row="1" />
+                 Grid.Row="1" 
+                 Name="nameTextbox" TextChanged="NameTextbox_TextChanged"
+                 Text="{Binding newDebtorName}"/>
 
         <TextBox Grid.Column="2" 
                  VerticalAlignment="Center"
                  Grid.Row="2" 
                  Margin="10,1" 
-                 MaxHeight="15" />
+                 MaxHeight="15" 
+                 Name="debtTextbox"
+                 Text="{Binding newDebtorDebt}"/>
     </Grid>
 </Window>

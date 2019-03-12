@@ -48,6 +48,29 @@ namespace TheDebtBook.ViewModel
             set { SetProperty(ref debtors, value); }
         }
 
+        private double _newDebtorDebt;
+
+        public double newDebtorDebt
+        {
+            get { return _newDebtorDebt; }
+            set
+            {
+                SetProperty(ref _newDebtorDebt, value);
+            }
+        }
+
+        private string _newDebtorName;
+
+        public string newDebtorName
+        {
+            get { return _newDebtorName;}
+            set { SetProperty(ref _newDebtorName, value); }
+        } 
+
+
+
+        
+
         #endregion //Properties
 
 
@@ -63,6 +86,10 @@ namespace TheDebtBook.ViewModel
         private void AddDebtorCommandExecute()
         {
             var newDebtor = new Debtor();
+            //
+            newDebtor.Debt = newDebtorDebt;
+            newDebtor.Name = newDebtorName;
+
             Debtors.Add(newDebtor);
             _modelDebtor = newDebtor;
         }
