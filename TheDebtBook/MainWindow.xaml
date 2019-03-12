@@ -36,6 +36,7 @@
                    FontSize="16"/>
 
         <DataGrid Grid.Row="1"
+                  IsReadOnly="True"
                   Grid.Column="0"
                   Name="dgrdDepters" 
                   AutoGenerateColumns="False"
