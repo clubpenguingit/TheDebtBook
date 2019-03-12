@@ -20,91 +20,96 @@
             <ColumnDefinition Width="Auto"/>
 
         </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-        </Grid.RowDefinitions>
-        <TextBlock Text="Debtors:" 
-                   Margin="10,10"
-                   VerticalAlignment="Bottom"
-                   Grid.Row="0"
-                   Grid.Column="0"
-                   FontWeight="Bold"
-                   FontStyle="Italic"
-                   FontSize="16"/>
+        <StackPanel Grid.Column="0">
+            <TextBlock Text="Debtors:" 
+                       Margin="10,10"
+                       VerticalAlignment="Bottom"
+                       FontWeight="Bold"
+                       FontStyle="Italic"
+                       FontSize="16"/>
+            <DataGrid IsReadOnly="True"
+                      Name="dgrdDepters" 
+                      AutoGenerateColumns="False"
+                      MinWidth="20"
+                      MaxHeight="350"
+                      Margin="10,10"
+                      VerticalAlignment="Top"
+                      ItemsSource="{Binding Path=Debtors, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="MouseDoubleClick">
+                        <i:InvokeCommandAction Command="{Binding ShowTransactionCommand}"
+                                               CommandParameter="{Binding Path = SelectedItem, RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=DataGrid}}"></i:InvokeCommandAction>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
 
-        <DataGrid Grid.Row="1"
-                  IsReadOnly="True"
-                  Grid.Column="0"
-                  Name="dgrdDepters" 
-                  AutoGenerateColumns="False"
-                  MinWidth="250"
-                  Margin="10,10"
-                  VerticalAlignment="Top"
-                  ItemsSource="{Binding Path=Debtors, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                  
-                  >
-            <i:Interaction.Triggers>
-                <i:EventTrigger EventName="MouseDoubleClick">
-                    <i:InvokeCommandAction Command="{Binding ShowTransactionCommand}"
-                                           CommandParameter="{Binding Path = SelectedItem, RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=DataGrid}}"></i:InvokeCommandAction>
-                </i:EventTrigger>
-            </i:Interaction.Triggers>
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Name" 
+                                        Binding="{Binding Path=Name}"/>
 
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="Name" 
-                                    Binding="{Binding Path=Name}"/>
-
-                <DataGridTextColumn Header="Debt" 
-                                    Binding="{Binding Path=Debt, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-            </DataGrid.Columns>
+                    <DataGridTextColumn Header="Debt" 
+                                        Binding="{Binding Path=Debt, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                </DataGrid.Columns>
             </DataGrid>
-        
 
-        <Button Grid.Column="2" 
-                Grid.Row="3" 
-                MaxWidth="100"
-                HorizontalAlignment="Right"
-                Name="btnAdd" 
-                Margin="10,0"
-                Content="Add new debtor"  
-                Padding="5"
-                Command="{Binding AddDebtorCommand }"
-                />
+        </StackPanel>
 
-        <Label Content="Name: " 
-               FontWeight="Bold"
-               HorizontalAlignment="Center"
-               VerticalAlignment="Center"
-               Grid.Row="1" 
-               Grid.Column="1" 
-               Margin="10,10"/>
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.25*"/>
+                <RowDefinition Height="0.15*"/>
+                <RowDefinition Height="0.15*"/>
+                <RowDefinition Height="1.50*"/>
+            </Grid.RowDefinitions>
 
-        <Label Content="Debt: " 
-               FontWeight="Bold"
-               HorizontalAlignment="Center"
-               VerticalAlignment="Center"
-               Grid.Row="2" 
-               Grid.Column="1" 
-               Margin="10,10"/>
+            <Label Grid.Row="1"
+                Content="Name: " 
+                FontWeight="Bold"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Margin="10,2"/>
 
-        <TextBox Grid.Column="2" 
-                 VerticalAlignment="Center"
-                 Margin="10,2" 
-                 MinWidth="250" 
-                 MaxHeight="15" 
-                 Grid.Row="1" 
-                 Name="nameTextbox" TextChanged="NameTextbox_TextChanged"
-                 Text="{Binding newDebtorName}"/>
+            <Label Grid.Row="2"
+                Content="Debt: " 
+                   FontWeight="Bold"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Center" 
+                   Margin="10,2"/>
+        </Grid>
 
-        <TextBox Grid.Column="2" 
-                 VerticalAlignment="Center"
-                 Grid.Row="2" 
-                 Margin="10,1" 
-                 MaxHeight="15" 
-                 Name="debtTextbox"
-                 Text="{Binding newDebtorDebt}"/>
+        <Grid Grid.Column="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.2*"/>
+                <RowDefinition Height="0.1*"/>
+                <RowDefinition Height="0.1*"/>
+                <RowDefinition Height="0.1*"/>
+                <RowDefinition Height="1*"/>
+            </Grid.RowDefinitions>
+
+            <TextBox VerticalAlignment="Center"
+                     Margin="10,2" 
+                     MinWidth="250" 
+                     MaxHeight="15" 
+                     Grid.Row="1" 
+                     Name="nameTextbox" 
+                     Text="{Binding newDebtorName}"/>
+
+            <TextBox VerticalAlignment="Center"
+                     Grid.Row="2" 
+                     Margin="10,1" 
+                     MaxHeight="15" 
+                     Name="debtTextbox"
+                     Text="{Binding newDebtorDebt}"/>
+
+            <Button MaxWidth="100"
+                    HorizontalAlignment="Right"
+                    Name="btnAdd" 
+                    Margin="10,0"
+                    Grid.Row="3"
+                    Content="Add new debtor"  
+                    Padding="5"
+                    Command="{Binding AddDebtorCommand }"/>
+        </Grid>
+
+
     </Grid>
 </Window>

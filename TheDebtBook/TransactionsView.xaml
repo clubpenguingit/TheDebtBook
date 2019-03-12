@@ -19,6 +19,7 @@
             <DataGrid Margin="10,10" 
                       Width="Auto" 
                       MinWidth="200" 
+                      MaxHeight="350"
                       ItemsSource="{Binding Path=ModelDebtor.TransactionsList}" 
                       AutoGenerateColumns="True"
                       IsReadOnly="True">
