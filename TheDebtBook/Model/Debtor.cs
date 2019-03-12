@@ -16,7 +16,7 @@ namespace TheDebtBook.Model
             Name = name;           
             TransactionsList = new TransList();
             if (debt != 0)
-                TransactionsList.Add(new Payment(DateTime.Now, debt));
+                PayOrBorrow(debt);
         }
 
         public TransList TransactionsList { get; set; }
