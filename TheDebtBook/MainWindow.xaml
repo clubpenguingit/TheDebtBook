@@ -47,7 +47,7 @@
                                         Binding="{Binding Path=Name}"/>
 
                     <DataGridTextColumn Header="Debt" 
-                                        Binding="{Binding Path=Debt, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                                        Binding="{Binding Path=Debt, UpdateSourceTrigger=PropertyChanged}"/>
                 </DataGrid.Columns>
             </DataGrid>
 

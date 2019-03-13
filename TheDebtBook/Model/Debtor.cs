@@ -7,10 +7,33 @@ using System.Runtime.CompilerServices;
 namespace TheDebtBook.Model
 {
 
-    public class TransList : ObservableCollection<Payment> { }
 
     public class Debtor : INotifyPropertyChanged
     {
+       
+        public Debtor(string name = "NN", double debt = 0)
+        {
+            Name = name;           
+            TransactionsList = new TransList();
+            if (debt != 0)
+                PayOrBorrow(debt);
+        }
+
+        public TransList TransactionsList { get; set; }
+        public string Name  { get; set; }
+        public double Debt  { get; private set; }
+        
+
+        public void PayOrBorrow(double amount)
+        {
+            Debt += amount;
+            TransactionsList.Add(new Payment(DateTime.Now, amount));
+            Notify("Debt");
+            //Behøver ikke notify på TransactionsList da den er ObservableCollection 
+        }
+
+        #region PropertyChangedRegion
+
         public event PropertyChangedEventHandler PropertyChanged;
         protected void Notify([CallerMemberName]string propName = null)
         {
@@ -20,23 +43,8 @@ namespace TheDebtBook.Model
                 handler(this, new PropertyChangedEventArgs(propName));
             }
         }
-        public Debtor(string name = "NN", double debt = 0)
-        {
-            Name = name;
-            Debt = debt;
-            TransactionsList = new TransList();
-        }
 
-        public TransList TransactionsList { get; set; }
-        public string Name  { get; set; }
-        public double Debt  { get; set; }
+        #endregion
         
-
-        public void PayOrBorrow(double amount)
-        {
-            Debt += amount;
-            TransactionsList.Add(new Payment(DateTime.Now, amount));
-            Notify("Debt");
-        }
     }
 }
