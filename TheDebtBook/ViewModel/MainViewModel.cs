@@ -34,12 +34,7 @@ namespace TheDebtBook.ViewModel
             set {SetProperty(ref _modelDebtor, value);}
         }
 
-        private Payment _modelPayment;
-        public Payment ModelPayment
-        {
-            get { return _modelPayment; }
-            set { SetProperty(ref _modelPayment, value); }
-        }
+     
 
         private ObservableCollection<Debtor> debtors;
 
