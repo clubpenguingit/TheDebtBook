@@ -32,7 +32,7 @@ namespace TheDebtBook.Model
             //Behøver ikke notify på TransactionsList da den er ObservableCollection 
         }
 
-        #region PropertyChangedRegion
+        #region PropertyChangedOgNotifyRegion
 
         public event PropertyChangedEventHandler PropertyChanged;
         protected void Notify([CallerMemberName]string propName = null)

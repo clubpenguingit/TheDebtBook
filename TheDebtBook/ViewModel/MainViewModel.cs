@@ -26,7 +26,7 @@ namespace TheDebtBook.ViewModel
 
         #region Properties
 
-       // public List<Payment> CurrentTransList { get; set; }
+        //Current chosen debtor (used in TransactionView)
         private Debtor _modelDebtor;
         public Debtor ModelDebtor
         {
@@ -35,17 +35,16 @@ namespace TheDebtBook.ViewModel
         }
 
      
-
+        //List of debtors used by datagrid in MainWindow
         private ObservableCollection<Debtor> debtors;
-
         public ObservableCollection<Debtor> Debtors
         {
             get { return debtors; }
             set { SetProperty(ref debtors, value); }
         }
 
+        //Debt property used to create new debtor
         private double _newDebtorDebt;
-
         public double newDebtorDebt
         {
             get { return _newDebtorDebt; }
@@ -55,8 +54,8 @@ namespace TheDebtBook.ViewModel
             }
         }
 
+        //Name property used to create new debtor
         private string _newDebtorName;
-
         public string newDebtorName
         {
             get { return _newDebtorName;}
@@ -84,12 +83,13 @@ namespace TheDebtBook.ViewModel
             if (!String.IsNullOrEmpty(newDebtorName))
             {
                 var newDebtor = new Debtor();
-                //
+                // Set properties and add to list
                 newDebtor.Name = newDebtorName;
                 newDebtor.PayOrBorrow(newDebtorDebt);
                 Debtors.Add(newDebtor);
                 _modelDebtor = newDebtor;
 
+                //Reset textbox binded properties
                 newDebtorName = "";
                 newDebtorDebt = 0;
             }
@@ -111,14 +111,15 @@ namespace TheDebtBook.ViewModel
 
         private void ShowTransactionCommandExecute(Debtor e)
         {
+            // Save chosen debtor in ModelDebtor property
             ModelDebtor = e;
+
+            // Create window
             var window = new TransactionsView();
 
-            if (window.ShowDialog() == true) // Change window 
-            {
-                
-            }
-            
+            // Show window, do nothing upon close. 
+            if (window.ShowDialog() == true)
+            { }
         }
 
         private ICommand _addTransaction;
@@ -134,14 +135,18 @@ namespace TheDebtBook.ViewModel
 
         private void AddTransactionExecute(string val)
         {
+            // Must have value
             if (!String.IsNullOrEmpty(val))
             {
+                // ****Check if val is a number*****//
                 double v;
                 bool success = double.TryParse(val, out v);
+                // *********************************//
                 if (success)
                 {
                     ModelDebtor.PayOrBorrow(double.Parse(val));
                 }
+
                 else
                 {
                     MessageBox.Show($"Value must be numeric.\n" +

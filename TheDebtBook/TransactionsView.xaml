@@ -5,9 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TheDebtBook"
         mc:Ignorable="d"
-        Title="{Binding Path=ModelDebtor.Name, StringFormat=',{0}s Transactions'}" Height="450" Width="800"
+        Title="{Binding Path=ModelDebtor.Name, StringFormat=' {0}s Transactions'}" 
+        Height="450" Width="800"
         DataContext="{Binding Source={StaticResource ViewModelLocator}, Path=MainViewModel}">
     <Grid>
+
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto"></ColumnDefinition>
             <ColumnDefinition Width="Auto"></ColumnDefinition>
@@ -23,35 +25,27 @@
                       ItemsSource="{Binding Path=ModelDebtor.TransactionsList}" 
                       AutoGenerateColumns="True"
                       IsReadOnly="True">
-                <!--<DataGrid.Columns>
-                    <DataGridTextColumn Header="Date"
-                                   Width=" Auto"
-                                   
-                                   MinWidth="100"
-                                   Binding="{Binding Path=Date}"></DataGridTextColumn
-               >
-               <DataGridTextColumn Header="Transaction"
-                                   Binding="{Binding Path=Amount}"></DataGridTextColumn>
-                </DataGrid.Columns>-->
-                
-                
             </DataGrid>
 
-            <Button Margin="10,10" IsCancel="True">_Close</Button>
+            <Button Margin="10,10" IsCancel="True">_Close
+            </Button>
         </StackPanel>
         
         <StackPanel Grid.Column="1"
-                    Width="Auto"
-                    >
-            <TextBox Name="transbox"  HorizontalContentAlignment="Center"
+                    Width="Auto">
+            <TextBox Name="transbox"  
+                     HorizontalContentAlignment="Center"
                      Text="Amount"
                      Margin="10,10"
                      MinWidth="100"
                      HorizontalAlignment="Center"
                      ></TextBox>
-            <Button Name="Knap"  Margin="10,10" Command="{Binding Path= AddTransactionCommand}"
+            <Button Name="Knap"  
+                    Margin="10,10" 
+                    Command="{Binding Path= AddTransactionCommand}"
                     CommandParameter="{Binding ElementName=transbox, Path=Text}" 
-                    >_Add Transaction</Button>
+                    >_Add Transaction
+            </Button>
         </StackPanel>
     </Grid>
 </Window>
