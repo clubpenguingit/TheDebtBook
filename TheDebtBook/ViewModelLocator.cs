@@ -7,12 +7,7 @@ namespace TheDebtBook
         private MainViewModel _model;
         public MainViewModel MainViewModel
         {
-            get { return _model; }
-        }
-
-        public ViewModelLocator()
-        {
-            _model = new MainViewModel();
+            get { return _model ?? (_model = new MainViewModel()); }
         }
     }
 }
