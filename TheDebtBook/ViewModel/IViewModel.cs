@@ -7,7 +7,8 @@ namespace TheDebtBook.ViewModel
 {
     public interface IViewModel
     {
-        ObservableCollection<Debtor> Debtors { get; set; }
+        ObservableCollection<IDebtor> Debtors { get; set; }
+        IDebtor ModelDebtor { get; set; }
         double newDebtorDebt { get; set; }
         string newDebtorName { get; set; }
 

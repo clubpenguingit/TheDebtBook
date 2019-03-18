@@ -17,7 +17,7 @@ namespace TheDebtBook.ViewModel
 
         public MainViewModel()
         {
-            debtors = new ObservableCollection<Debtor>();
+            debtors = new ObservableCollection<IDebtor>();
             Debtors.Add(new Debtor("Britta Nielsen"));
             Debtors.Add(new Debtor("Tobias Lund"));
             Debtors[0].PayOrBorrow(-012397345);
@@ -27,8 +27,8 @@ namespace TheDebtBook.ViewModel
         #region Properties
 
         //Current chosen debtor (used in TransactionView)
-        private Debtor _modelDebtor;
-        public Debtor ModelDebtor
+        private IDebtor _modelDebtor;
+        public IDebtor ModelDebtor
         {
             get { return _modelDebtor; }
             set {SetProperty(ref _modelDebtor, value);}
@@ -36,8 +36,8 @@ namespace TheDebtBook.ViewModel
 
      
         //List of debtors used by datagrid in MainWindow
-        private ObservableCollection<Debtor> debtors;
-        public ObservableCollection<Debtor> Debtors
+        private ObservableCollection<IDebtor> debtors;
+        public ObservableCollection<IDebtor> Debtors
         {
             get { return debtors; }
             set { SetProperty(ref debtors, value); }

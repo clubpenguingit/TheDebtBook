@@ -3,5 +3,5 @@
 namespace TheDebtBook.Model
 {
     // Collection of Payments - like list
-    public class TransList : ObservableCollection<Payment> { }
+    public class TransList : ObservableCollection<IPayment> { }
 }

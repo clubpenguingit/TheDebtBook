@@ -12,7 +12,7 @@ namespace TheDebtBook.Model
     {
         string Name { get; set; }
         double Debt { get; }
-        TransList TransactionList { get; set; }
+        TransList TransactionsList { get; set; }
 
         void PayOrBorrow(double amount);
         event PropertyChangedEventHandler PropertyChanged;
