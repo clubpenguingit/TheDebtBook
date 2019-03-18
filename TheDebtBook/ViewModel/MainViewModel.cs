@@ -12,7 +12,7 @@ using TheDebtBook.Model;
 
 namespace TheDebtBook.ViewModel
 {
-    public class MainViewModel : BindableBase
+    public class MainViewModel : BindableBase, IViewModel
     {
 
         public MainViewModel()
@@ -76,6 +76,7 @@ namespace TheDebtBook.ViewModel
         public ICommand AddDebtorCommand
         {
             get { return _AddDebtorCommand ?? (_AddDebtorCommand = new DelegateCommand(AddDebtorCommandExecute)); }
+           
         }
 
         private void AddDebtorCommandExecute()
@@ -107,6 +108,7 @@ namespace TheDebtBook.ViewModel
             {
                 return _ShowTransactionCommand ?? (_ShowTransactionCommand = new DelegateCommand<Debtor>(ShowTransactionCommandExecute));
             }
+           
         }
 
         private void ShowTransactionCommandExecute(Debtor e)
@@ -131,6 +133,7 @@ namespace TheDebtBook.ViewModel
                 return _addTransaction ?? (_addTransaction = new DelegateCommand<string>(AddTransactionExecute)); 
 
             }
+          
         }
 
         private void AddTransactionExecute(string val)

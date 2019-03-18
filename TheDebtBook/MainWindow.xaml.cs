@@ -28,10 +28,5 @@ namespace TheDebtBook
         {
             InitializeComponent();
         }
-
-        private void NameTextbox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
-        }
     }
 }
