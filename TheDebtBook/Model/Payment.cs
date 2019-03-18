@@ -2,7 +2,7 @@
 
 namespace TheDebtBook.Model
 {
-    public class Payment
+    public class Payment : IPayment
     {
         public Payment(DateTime date, double pay)
         {

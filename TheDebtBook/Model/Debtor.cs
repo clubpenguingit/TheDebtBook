@@ -8,7 +8,7 @@ namespace TheDebtBook.Model
 {
 
 
-    public class Debtor : INotifyPropertyChanged
+    public class Debtor : INotifyPropertyChanged, IDebtor
     {
        
         public Debtor(string name = "NN", double debt = 0)

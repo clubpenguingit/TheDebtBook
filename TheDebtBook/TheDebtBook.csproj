@@ -68,6 +68,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Model\IDebtor.cs" />
+    <Compile Include="Model\IPayment.cs" />
     <Compile Include="Model\TransList.cs" />
     <Compile Include="TransactionsView.xaml.cs">
       <DependentUpon>TransactionsView.xaml</DependentUpon>
