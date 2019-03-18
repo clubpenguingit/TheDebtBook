@@ -4,8 +4,8 @@ namespace TheDebtBook
 {
     public class ViewModelLocator
     {
-        private MainViewModel _model;
-        public MainViewModel MainViewModel
+        private IViewModel _model;
+        public IViewModel MainViewModel
         {
             get { return _model ?? (_model = new MainViewModel()); }
         }

@@ -38,7 +38,8 @@
                 <i:Interaction.Triggers>
                     <i:EventTrigger EventName="MouseDoubleClick">
                         <i:InvokeCommandAction Command="{Binding ShowTransactionCommand}"
-                                               CommandParameter="{Binding Path = SelectedItem, RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=DataGrid}}"></i:InvokeCommandAction>
+                                               CommandParameter="{Binding Path = SelectedItem, RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=DataGrid}}">
+                        </i:InvokeCommandAction>
                     </i:EventTrigger>
                 </i:Interaction.Triggers>
 
